@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "pft",
+    "slug": "pft",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/wallet.png",
+    "scheme": "rnstarter",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/wallet.png",
+        "backgroundColor": "#000000"
+      },
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/wallet.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash.jpg",
+          "backgroundColor": "#000000",
+          "resizeMode": "cover",
+          "imageWidth": 200
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
