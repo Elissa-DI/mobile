@@ -1,0 +1,22 @@
+flowchart TD
+  subgraph Auth Endpoints
+    A1[POST /login]
+    A2[POST /signup]
+    A3[POST /forgot-password]
+    A4[POST /reset-password]
+  end
+
+  subgraph Expense Endpoints
+    E1[GET /expenses]
+    E2[POST /expenses]
+    E3[GET /expenses/:id]
+    E4[PUT /expenses/:id]
+    E5[DELETE /expenses/:id]
+  end
+
+  subgraph User Endpoints
+    U1[GET /users]
+    U2[GET /users/:id]
+    U3[PUT /users/:id]
+    U4[DELETE /users/:id]
+  end

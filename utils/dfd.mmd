@@ -1,0 +1,7 @@
+flowchart LR
+  User[User] -->|Input| MobileApp[Mobile Application]
+  MobileApp -->|API Request| API[Backend API]
+  API -->|Query/Update| Database[(Database)]
+  Database -->|Response| API
+  API -->|API Response| MobileApp
+  MobileApp -->|Display Data| User

@@ -24,7 +24,9 @@ const ExpenseCard: React.FC<Props> = ({ expense }) => {
     >
       <View className="flex-row items-center justify-between">
         <View className="flex-row items-center space-x-3">
-          <Ionicons name="card-outline" size={24} color="#0EA5E9" />
+          <View className="bg-sky-100 p-2 rounded-full">
+            <Ionicons name="card-outline" size={24} color="#0EA5E9" />
+          </View>
           <View>
             <Text className="text-base font-medium">{expense.name}</Text>
             <Text className="text-sm text-gray-500">
@@ -33,9 +35,14 @@ const ExpenseCard: React.FC<Props> = ({ expense }) => {
           </View>
         </View>
 
-        <Text className="text-lg font-semibold text-green-600">
-          ${expense.amount}
-        </Text>
+        <View className="flex-row items-center space-x-2">
+          <Text className="text-lg font-semibold text-sky-500">
+            ${expense.amount}
+          </Text>
+          <View>
+            <Ionicons name="chevron-forward" size={20} color="#0EA5E9"/>
+          </View>
+        </View>
       </View>
     </TouchableOpacity>
   );

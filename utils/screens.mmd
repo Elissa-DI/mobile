@@ -1,0 +1,20 @@
+flowchart TD
+  subgraph Authentication Screens
+    Login[Login Screen]
+    Register[Register Screen]
+    Forgot[Forgot Password Screen]
+  end
+
+  subgraph Main App Screens
+    Home[Home Screen]
+    SingleExpense[Single Expense Screen]
+    CreateExpense[Create Expense Screen]
+    Profile[Profile Screen]
+  end
+
+  Login --> Home
+  Register --> Home
+  Forgot --> Login
+  Home --> SingleExpense
+  Home --> CreateExpense
+  Home --> Profile

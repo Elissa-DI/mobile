@@ -14,6 +14,7 @@ import { useExpenses } from "@/hooks/useExpenses";
 import ExpenseCard from "@/components/expense/expenseCard";
 import StatCard from "@/components/home/statCard";
 import { useExpenseStats } from "@/hooks/useExpenseStats";
+import { Ionicons } from "@expo/vector-icons";
 
 const HomePage = () => {
   const { user } = useAuth();
@@ -40,33 +41,25 @@ const HomePage = () => {
       <CustomHeader title={`Welcome, ${user?.username || "User"}`} />
 
       <View className="p-4">
-        {/* <View style={{ flexDirection: "row", marginBottom: 16 }}>
-          <StatCard label="Total Spent" value={stats.totalMoney} />
-          <StatCard label="Total Expenses" value={stats.totalExpenses} />
-          <StatCard label="Weekly Spent" value={stats.weeklyMoney} />
-          <StatCard label="Monthly Spent" value={stats.monthlyMoney} />
-        </View> */}
-        <View className="mb-4">
+        <View className="mb-4 w-full h-24">
           <StatCard label="Total Spent" value={stats.totalMoney} />
         </View>
 
-        <View className="flex-row justify-between">
-          <View className="flex-1 mr-2">
+        <View className="flex-row w-full mb-4">
+          <View className="mr-2 w-1/3">
             <StatCard label="Total Expenses" value={stats.totalExpenses} />
           </View>
-          <View className="flex-1 mx-1">
+          <View className="mr-2 w-1/3">
             <StatCard label="Weekly Spent" value={stats.weeklyMoney} />
           </View>
-          <View className="flex-1 ml-2">
-            <StatCard label="Monthly Spent" value={stats.monthlyMoney} />
-          </View>
+          <StatCard label="Monthly Spent" value={stats.monthlyMoney} />
         </View>
 
         <TextInput
           placeholder="Search by category or description"
           value={searchTerm}
           onChangeText={setSearchTerm}
-          className="border border-gray-300 rounded-md px-3 py-2 mb-4"
+          className="border rounded-full px-3 py-2 mb-4"
         />
 
         <Text className="text-lg font-semibold mb-4">Recent Expenses</Text>
@@ -76,7 +69,17 @@ const HomePage = () => {
             <ActivityIndicator size="large" color="#0ea5e9" />
           </View>
         ) : filteredExpenses.length === 0 ? (
-          <Text>No expenses found.</Text>
+          <View className="flex h-[50%] justify-center items-center p-5">
+            <Ionicons
+              name="wallet-outline"
+              size={80}
+              color="#0ea5e9"
+              className="mb-4"
+            />
+            <Text className="text-lg text-gray-500 text-center">
+              No expenses found.
+            </Text>
+          </View>
         ) : (
           <FlatList
             data={filteredExpenses.slice(0, 10)}

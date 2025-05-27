@@ -39,7 +39,7 @@ const StatCard: React.FC<StatCardProps> = ({
       onPress={onPress}
       onPressIn={onPressIn}
       onPressOut={onPressOut}
-      className="flex-1 bg-sky-100 mr-3 rounded-xl items-center justify-center shadow-md shadow-sky-400/30 p-4"
+      className="flex-1 bg-sky-100 rounded-xl items-center justify-center shadow-md shadow-sky-400/30 p-4"
     >
       <Animated.View style={{ transform: [{ scale }] }}>
         <Text

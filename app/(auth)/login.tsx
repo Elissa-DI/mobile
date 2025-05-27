@@ -5,38 +5,50 @@ import CustomInput from "@/components/common/customInput";
 import CustomButton from "@/components/common/customButton";
 import { Link, router } from "expo-router";
 import { loginUser } from "@/services/authService";
-import { useToast } from "react-native-toast-notifications";
 import { useAuth } from "@/contexts/AuthContext";
+import { z } from "zod";
+
+const schema = z.object({
+  email: z.string().email("Invalid email address"),
+  password: z.string().max(15, "Password must be at most 15 characters long"),
+});
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>(
+    {}
+  );
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { login } = useAuth();
-  const toast = useToast();
 
   const handleLogin = async () => {
-    if (!email || !password) {
-      toast.show("Email and password are required.", { type: "danger" });
+    const result = schema.safeParse({ email, password });
+
+    if (!result.success) {
+      const fieldErrors: typeof errors = {};
+      for (const issue of result.error.issues) {
+        fieldErrors[issue.path[0] as keyof typeof errors] = issue.message;
+      }
+      setErrors(fieldErrors);
       return;
     }
 
+    setErrors({});
     setIsSubmitting(true);
 
     try {
       const user = await loginUser(email);
 
       if (user.password !== password) {
-        toast.show("Incorrect password.", { type: "danger" });
+        setErrors({ password: "Incorrect password." });
       } else {
         await login(user);
-        // Login successful, navigate to dashboard
-        toast.show("Login successful!", { type: "success" });
         router.push("/(tabs)");
       }
     } catch (error: any) {
-      toast.show(error.message || "Login failed", { type: "danger" });
+      setErrors({ email: error.message || "Login failed" });
     } finally {
       setIsSubmitting(false);
     }
@@ -52,7 +64,7 @@ const LoginPage = () => {
           </Text>
         </View>
 
-        <View>
+        <View className="mt-6">
           <CustomInput
             label="Email"
             placeholder="Enter your email"
@@ -60,6 +72,9 @@ const LoginPage = () => {
             onChangeText={setEmail}
             type="text"
           />
+          {errors.email && (
+            <Text className="text-sm text-red-600 mt-1">{errors.email}</Text>
+          )}
 
           <CustomInput
             label="Password"
@@ -68,6 +83,10 @@ const LoginPage = () => {
             onChangeText={setPassword}
             type="password"
           />
+          {errors.password && (
+            <Text className="text-sm text-red-600 mt-1">{errors.password}</Text>
+          )}
+
           <View className="flex-row justify-end mt-1">
             <Link
               href="/(auth)/forgot"
