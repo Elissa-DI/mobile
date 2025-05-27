@@ -1,32 +1,30 @@
 graph TD
-  subgraph Root
-    A[.expo]
-    B[.idea]
-    C[app]
-    D[assets]
-    E[components]
-    F[constants]
-    G[contexts]
-    H[hooks]
-    I[lib]
-    J[node_modules]
-    K[scripts]
-    L[services]
-    M[types]
-    N[utils]
-    O[.gitignore]
-    P[app.json]
-    Q[babel.config.js]
-    R[eslint.config.js]
-    S[expo-env.d.ts]
-    T[global.css]
-    U[package-lock.json]
-    V[package.json]
-    W[postcss.config.js]
-    X[README.md]
-    Y[tailwind.config.js]
-    Z[tsconfig.json]
-  end
+  A[.expo]
+  B[.idea]
+  C[app]
+  D[assets]
+  E[components]
+  F[constants]
+  G[contexts]
+  H[hooks]
+  I[lib]
+  J[node_modules]
+  K[scripts]
+  L[services]
+  M[types]
+  N[utils]
+  O[.gitignore]
+  P[app.json]
+  Q[babel.config.js]
+  R[eslint.config.js]
+  S[expo-env.d.ts]
+  T[global.css]
+  U[package-lock.json]
+  V[package.json]
+  W[postcss.config.js]
+  X[README.md]
+  Y[tailwind.config.js]
+  Z[tsconfig.json]
 
   subgraph app
     A1["(auth)"]
@@ -36,105 +34,8 @@ graph TD
     A5["_layout.tsx"]
   end
 
-  %% Root contains app and other folders
-  Root --> app
-  Root --> assets
-  Root --> components
-  Root --> constants
-  Root --> contexts
-  Root --> hooks
-  Root --> lib
-  Root --> node_modules
-  Root --> scripts
-  Root --> services
-  Root --> types
-  Root --> utils
-  Root --> .gitignore
-  Root --> app.json
-  Root --> babel.config.js
-  Root --> eslint.config.js
-  Root --> expo-env.d.ts
-  Root --> global.css
-  Root --> package-lock.json
-  Root --> package.json
-  Root --> postcss.config.js
-  Root --> README.md
-  Root --> tailwind.config.js
-  Root --> tsconfig.json
-
-  %% app folder contents
-  app --> A1
-  app --> A2
-  app --> A3
-  app --> A4
-  app --> A5
-graph TD
-  subgraph Root
-    A[.expo]
-    B[.idea]
-    C[app]
-    D[assets]
-    E[components]
-    F[constants]
-    G[contexts]
-    H[hooks]
-    I[lib]
-    J[node_modules]
-    K[scripts]
-    L[services]
-    M[types]
-    N[utils]
-    O[.gitignore]
-    P[app.json]
-    Q[babel.config.js]
-    R[eslint.config.js]
-    S[expo-env.d.ts]
-    T[global.css]
-    U[package-lock.json]
-    V[package.json]
-    W[postcss.config.js]
-    X[README.md]
-    Y[tailwind.config.js]
-    Z[tsconfig.json]
-  end
-
-  subgraph app
-    A1["(auth)"]
-    A2["(modals)"]
-    A3["(tabs)"]
-    A4["+not-found.tsx"]
-    A5["_layout.tsx"]
-  end
-
-  %% Root contains app and other folders
-  Root --> app
-  Root --> assets
-  Root --> components
-  Root --> constants
-  Root --> contexts
-  Root --> hooks
-  Root --> lib
-  Root --> node_modules
-  Root --> scripts
-  Root --> services
-  Root --> types
-  Root --> utils
-  Root --> .gitignore
-  Root --> app.json
-  Root --> babel.config.js
-  Root --> eslint.config.js
-  Root --> expo-env.d.ts
-  Root --> global.css
-  Root --> package-lock.json
-  Root --> package.json
-  Root --> postcss.config.js
-  Root --> README.md
-  Root --> tailwind.config.js
-  Root --> tsconfig.json
-
-  %% app folder contents
-  app --> A1
-  app --> A2
-  app --> A3
-  app --> A4
-  app --> A5
+  C --> A1
+  C --> A2
+  C --> A3
+  C --> A4
+  C --> A5
